@@ -1,28 +1,55 @@
 <!doctype html>
 <html>
 <head>
-    <title>Google SignIn</title>
+    <title>SSD OAuth2.0 | Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/brands.min.css">
     <style>
-        body { padding-top: 70px; }
+        body {
+            padding-top: 10vh;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
-        <h1 class="text-primary text-center"><span class="fa fa-user"></span> Profile Information</h1>
+    <div class="jumbotron text-center">
+        <h1 class="display-4 text-primary text-center"><span class="fa fa-lock"></span> SSD OAuth 2.0</h1>
+        <hr class="my-4">
         <div class="row">
-            <div class="col-sm-6">
-                <div class="well">
-                    <p>
-                        <strong>Id</strong>: <%= user.id %><br>
-                        <strong>Email</strong>: <%= user.emails[0].value %><br>
-                        <strong>Name</strong>: <%= user.displayName %>
-                    </p>
+            <div class="col-sm-8">
+                <div class="card mb-3 text-left" style="max-width: 80vw; box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.3); border-radius: 0.3rem;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<%= user.photos[0].value %>" class="card-img" alt="profile picture">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-success"><span class="fa fa-user"></span> Profile Information
+                                </h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>Email</strong> : <%= user.emails[0].value %><br>
+                                    </li>
+                                    <li class="list-group-item"><strong>Name</strong> : <%= user.displayName %></li>
+                                </ul>
+                                <a href="/" class="btn btn-danger mt-3">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="max-width: 20vw; height: 31.8vh; box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.3); border-radius: 0.3rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="fa fa-google"></span> Upload to Drive</h5>
+                        <p class="card-text">Upload a file to your Google Drive <span class="text-info">SSD</span> directory.</p>
+                        <a href="#" class="btn btn-primary">Upload</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <p class="text-info mt-5"><span class="text-primary">SSD Assignment 2</span> | <strong>IT17158046</strong> - K.
+            T. U. Sanjana | <strong>IT17121248</strong> - H. B. D. R. Pearson</p>
     </div>
 </div>
 </body>

@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -9,13 +8,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'SECRET'
-}));
-
-app.get('/', (req, res) => res.render('SignIn'));
+app.get('/', (req, res) => {
+    res.render('SignIn');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
