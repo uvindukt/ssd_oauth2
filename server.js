@@ -1,46 +1,33 @@
 const express = require('express');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const fileUpload = require('express-fileupload');
+const cookieSession = require('cookie-session');
 
-const KEYS = require('./config.js');
+// Configuration keys
+const KEYS = require('./config/keys');
 
 const app = express();
 
-app.set('view engine', 'ejs');
+// Session
+app.use(cookieSession({keys: [KEYS.session.secret]}));
 
-app.get('/', (req, res) => {
-    res.render('SignIn');
-});
+// PassportJS configuration
+require('./config/config.passport.js');
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
-
-let userProfile;
-
+// PassportJS initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/home', (req, res) => res.render('Home', {user: userProfile}));
+// Server-side rendering engine
+app.set('view engine', 'ejs');
 
-app.get('/error', (req, res) => res.send("Failed to login"));
+// File upload intercept middleware
+app.use(fileUpload());
 
-passport.serializeUser((user, cb) => cb(null, user));
-passport.deserializeUser((obj, cb) => cb(null, obj));
+// Routes
+app.use('', require('./routes/route.home'));
+app.use('/auth', require('./routes/route.auth'));
 
-passport.use(new GoogleStrategy({
-        clientID: KEYS.google.clientID,
-        clientSecret: KEYS.google.clientSecret,
-        callbackURL: "http://localhost:5000/auth/google/redirect"
-    },
-    (accessToken, refreshToken, profile, done) => {
-        userProfile = profile;
-        return done(null, userProfile);
-    }
-));
-
-app.get('/auth/google',
-    passport.authenticate('google', {scope: ['profile', 'email']}));
-
-app.get('/auth/google/redirect',
-    passport.authenticate('google', {failureRedirect: '/error'}),
-    (req, res) => res.redirect('/home'));
+// Port and Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));

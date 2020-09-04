@@ -4,10 +4,9 @@
     <title>SSD OAuth2.0 | Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/brands.min.css">
     <style>
         body {
-            padding-top: 10vh;
+            padding-top: 6vh;
         }
     </style>
 </head>
@@ -16,23 +15,38 @@
     <div class="jumbotron text-center">
         <h1 class="display-4 text-primary text-center"><span class="fa fa-lock"></span> SSD OAuth 2.0</h1>
         <hr class="my-4">
+        <div class="row px-3">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <% if (user.uploadStatus === 'success') { %>
+                    <div class="alert alert-success" role="alert">
+                        File uploaded successfully.
+                    </div>
+                <% } else if (user.uploadStatus === 'failed') { %>
+                    <div class="alert alert-danger" role="alert">
+                        Failed to upload the file.
+                    </div>
+                <% } %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
         <div class="row">
             <div class="col-sm-8">
                 <div class="card mb-3 text-left" style="max-width: 80vw; box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.3); border-radius: 0.3rem;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<%= user.photos[0].value %>" class="card-img" alt="profile picture">
+                            <img src="<%= user.imageUrl %>" class="card-img" alt="profile picture">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title text-success"><span class="fa fa-user"></span> Profile Information
                                 </h5>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Email</strong> : <%= user.emails[0].value %><br>
+                                    <li class="list-group-item"><strong>Email</strong> : <%= user.email %><br>
                                     </li>
-                                    <li class="list-group-item"><strong>Name</strong> : <%= user.displayName %></li>
+                                    <li class="list-group-item"><strong>Name</strong> : <%= user.name %></li>
                                 </ul>
-                                <a href="/" class="btn btn-danger mt-3">Sign Out</a>
+                                <a href="/auth/logout" class="btn btn-danger mt-3">Sign Out</a>
                             </div>
                         </div>
                     </div>
@@ -43,8 +57,8 @@
                     <div class="card-body">
                         <h5 class="card-title"><span class="fa fa-google"></span> Upload to Drive</h5>
                         <p class="card-text">Upload a file to your Google Drive <span class="text-info">SSD</span> directory.</p>
-                        <form action="#">
-                            <input type="file" id="myFile" name="filename" class="ml-2">
+                        <form action="/upload" enctype="multipart/form-data" method="post">
+                            <input type="file" id="myFile" name="file" class="ml-2">
                             <input type="submit" class="btn btn-primary mt-3" value="Upload">
                         </form>
                     </div>
