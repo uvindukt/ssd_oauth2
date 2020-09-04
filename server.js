@@ -3,7 +3,7 @@ const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-const KEYS = require('./config/keys');
+const KEYS = require('./config.js');
 
 const app = express();
 
