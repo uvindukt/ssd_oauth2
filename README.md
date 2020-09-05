@@ -2,7 +2,7 @@
 
 SE 4030 - Secure Software Development - Assignment 2
 
-Sri Lanka Institute of Information Technology
+**Sri Lanka Institute of Information Technology**
 
 ### Authors
 * **IT17158046** - K. T. Uvindu Sanjana
