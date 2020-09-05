@@ -16,7 +16,7 @@ SE 4030 - Secure Software Development - Assignment 2
 $ npm install
 ```
 
-### Development Environment
+### Run Application
 
 ```bash
 # To run in production mode (For server deployments)
