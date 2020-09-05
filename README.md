@@ -1,6 +1,6 @@
 # SSD OAuth2.0
 
-SE 4030 - Secure Software Development - Assignment 2
+SE4030 - Secure Software Development - Assignment 2
 
 **Sri Lanka Institute of Information Technology**
 
