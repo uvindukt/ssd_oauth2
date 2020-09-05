@@ -1,15 +1,16 @@
 # SSD OAuth2.0
 
-##### SE 4030 - Secure Software Development - Assignment 2
-##### Sri Lanka Institute of Information Technology
+SE 4030 - Secure Software Development - Assignment 2
+
+Sri Lanka Institute of Information Technology
 
 ### Authors
-* IT17158046 - K. T. Uvindu Sanjana
-* IT17121248 - H. B. Damien Roy Pearson
+* **IT17158046** - K. T. Uvindu Sanjana
+* **IT17121248** - H. B. Damien Roy Pearson
 
 ## Installation
 
-### Package Manager, [npm](https://www.npmjs.com)
+### Package Manager - [npm](https://www.npmjs.com)
 
 ```bash
 $ npm install
