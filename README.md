@@ -26,6 +26,8 @@ $ npm start
 $ npm run dev
 ```
 
+#####After the server started and running, open a browser and visit http://localhost:5000/
+
 ### Project Structure
 ```
     ├── config                  # Configuration Files 
